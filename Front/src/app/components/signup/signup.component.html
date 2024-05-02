@@ -1,0 +1,92 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start s " >
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Se connecter</h2>
+            <form [formGroup]="signupForm" class="signup-form" (ngSubmit)="signup()">
+       
+              <mat-form-field class="form-outline" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" formControlName="email">
+                <mat-error *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">
+                  Veuillez saisir une adresse e-mail valide.
+                                </mat-error>
+                <mat-error *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched">
+                  Adresse e-mail invalide.
+                </mat-error>
+              </mat-form-field>
+
+              <!-- Password input -->
+              <mat-form-field class="form-outline" appearance="fill">
+                <mat-label>Mot De passe</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error
+                  *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched">
+                  Le mot de passe est requis.
+
+
+
+
+
+
+                </mat-error>
+                <mat-error
+                  *ngIf="signupForm.get('password').hasError('minlength') && signupForm.get('password').touched">
+                  Le mot de passe doit comporter au moins 5 caractères.
+
+
+
+
+
+
+                </mat-error>
+              </mat-form-field>
+              <!-- Radio buttons -->
+              <div class="mb-4">
+                <p class="mb-2">choisir ton role:</p>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="roleWorker" value="travailleur"
+                    formControlName="role" />
+                  <label class="form-check-label" for="roleWorker">Travailleur</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="roleContributor" value="contributeur"
+                    formControlName="role" />
+                  <label class="form-check-label" for="roleContributor">Contributeur</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" id="roleproductManager" value="productManager"
+                    formControlName="role" />
+                  <label class="form-check-label" for="roleproductManager">Manager De production </label>
+                </div>
+              </div>
+
+              <!-- Submit button -->
+
+
+              <button mat-raised-button color="primary" class="btn btn-primary btn-block mb-4" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                <div class="signup-link">Vous avez déjà un compte ?<a href="/login">{{'Se connecter'}}</a></div>
+
+               
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="../../../assets/signup.png" class="w-100 rounded-4 shadow-4" alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+<!-- Section: Design Block -->

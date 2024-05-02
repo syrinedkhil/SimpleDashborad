@@ -1,0 +1,99 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 20px;
+  margin: 0 auto;
+  padding-left: 50PX;
+    padding-right: 50PX;
+  max-width: 1348px;
+  
+}
+mat-form-field {
+  width: 100%;
+}
+
+.action {
+  display: flex;
+  gap: 5px;
+}
+mat-form-field{
+  margin-top: 20PX;
+}
+
+.AddTag{
+  float: right;
+
+}
+th{
+  color:rgb(12, 12, 12) ;
+  opacity: 0.8;
+}
+.editDelete{
+  padding: 0;
+}
+.mat-mdc-table{
+  background: #eee;
+}
+mat-paginator{
+  background: #eee;
+}
+
+.custom-add-button {
+  background-color: #cc3333; /* Couleur de fond pour le bouton d'édition */
+  color: #f4d6d6; 
+  font-size: 16px; /* Taille de police */
+  padding: 10px 20px; /* Ajoute un peu d'espacement intérieur pour le contenu */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+  border: 1px solid;
+}
+.custom-div {
+  background-color: #eee;
+  color: rgb(98, 96, 96);
+  font-size: 15px;
+  padding: 10px 20px; /* Ajoute un peu d'espacement intérieur pour le contenu */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  cursor: pointer;
+}
+
+.custom-div:hover {
+  background-color: #ddd; /* Change la couleur de fond au survol */
+}
+.custom-icon-button {
+  background-color: transparent; /* Fond transparent */
+  color: #777; /* Couleur du texte plus douce */
+  font-size: 24px; /* Taille de police */
+  border: none; /* Supprime les bordures */
+  outline: none; /* Supprime la mise en surbrillance au clic */
+  cursor: pointer; /* Curseur pointer pour indiquer que c'est cliquable */
+}
+
+.custom-icon-button:hover {
+  background-color: #f0f0f0; /* Change la couleur de fond au survol */
+  color: #333; /* Change la couleur du texte au survol */
+}
+.edit-button {
+  background-color: #f0f0f0; /* Couleur de fond pour le bouton d'édition */
+  color: #333; /* Couleur du texte pour le bouton d'édition */
+}
+
+.edit-button:hover {
+  background-color: #ddd; /* Couleur de fond au survol pour le bouton d'édition */
+}
+
+.delete-button {
+ /* background-color: #ffcccc; /* Couleur de fond pour le bouton de suppression */
+  color: #cc3333; /* Couleur du texte pour le bouton de suppression */
+}
+
+.delete-button:hover {
+  background-color: #ff9999; /* Couleur de fond au survol pour le bouton de suppression */
+}
+.buttonContainer{
+  POSITION: relative;
+  display: grid;
+  width: 30%;
+  LEFT: 70%;
+}

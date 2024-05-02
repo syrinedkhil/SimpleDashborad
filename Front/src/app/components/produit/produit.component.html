@@ -1,0 +1,73 @@
+<div class="main-body">
+  <div class="buttonContainer" *ngIf="hasRole('productManager')">
+
+    <button class="custom-add-button "  (click)="openAddEditProduitForm()">
+        Ajouter un Produit
+      </button>
+</div>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="produitId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Produit</th>
+        <td mat-cell *matCellDef="let row"> {{row.produitId}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Designation </th>
+        <td mat-cell *matCellDef="let row"> {{row.designation}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="codeConception">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Code Conception </th>
+        <td mat-cell *matCellDef="let row"> {{row.codeConception}}</td>
+      </ng-container>
+      <ng-container matColumnDef="decalageHoraire">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Decalage Horaire </th>
+        <td mat-cell *matCellDef="let row"> {{row.decalageHoraire}}</td>
+      </ng-container>
+      <ng-container matColumnDef="codeFournisseur">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Code Fournisseur </th>
+        <td mat-cell *matCellDef="let row"> {{row.codeFournisseur}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateCreation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Date Creation </th>
+        <td mat-cell *matCellDef="let row"> {{row.dateCreation}}</td>
+      </ng-container>
+      <ng-container matColumnDef="reference">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Référence </th>
+        <td mat-cell *matCellDef="let row"> {{row.reference}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action"  >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td class="editDelete" mat-cell *matCellDef="let row">
+          <button *ngIf="hasRole('productManager')" mat-icon-button class="custom-icon-button edit-button" (click)="openEditForm(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button *ngIf="hasRole('productManager')" mat-icon-button class="custom-icon-button delete-button"  (click)="deleteProduit(row.produitId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+        <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+
+<div mat-dialog-title>
+    <h1>Tag Form</h1>
+</div>
+<form [formGroup]="TagForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Ordre de Fabrication</mat-label>
+                <mat-select formControlName="ordreFabricationId">
+                  <mat-option *ngFor="let ordre of ListOrdreFabrication" [value]="ordre.ordreFabricationId">{{ ordre.ordreFabricationId }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>operateur</mat-label>
+                <input matInput placeholder="Ex. salah salah" formControlName="operateur">
+            </mat-form-field>
+        </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+
+
+
+    

@@ -1,0 +1,53 @@
+
+<div mat-dialog-title>
+    <h1>Ordre Form</h1>
+</div>
+<form [formGroup]="ordreForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date Debut réel</mat-label>
+                <input matInput [matDatepicker]="creationpicker" formControlName="dateDebutReel"  >
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="creationpicker"></mat-datepicker-toggle>
+                <mat-datepicker #creationpicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date Fin reel</mat-label>
+                    <input matInput [matDatepicker]="lancementpicker" formControlName="dateFinReel">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="lancementpicker"></mat-datepicker-toggle>
+                    <mat-datepicker #lancementpicker></mat-datepicker>
+                </mat-form-field>
+        </div>
+
+           <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Etat</mat-label>
+                <mat-select formControlName="etat" (selectionChange)="onetatSelectionChange($event)">
+
+                    <mat-option *ngFor="let d of Listetat" [value]="d">{{d }}</mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+           </div>
+           <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Ordre de fabrication</mat-label>
+                <mat-select formControlName="ordreFabricationId" (selectionChange)="onCodeSelectionChange($event)">
+                  <mat-option *ngFor="let o of ListOrdreFabrication" [value]="o.ordreFabricationId">{{ o.ordreFabricationId }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+           </div>
+           
+        </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+
+
+
+    

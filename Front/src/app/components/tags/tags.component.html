@@ -1,0 +1,57 @@
+  <div class="main-body">
+    <div class="buttonContainer" *ngIf="hasRole('productManager')">
+
+      <button class="custom-add-button "  (click)="openAddEditTagForm()">
+          Ajouter un  Tag
+        </button>
+      </div>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="idTag">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID Tag</th>
+          <td mat-cell *matCellDef="let row"> {{row.idTag}} </td>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container matColumnDef="ordreFabricationId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  Ordre De Fabrication </th>
+          <td mat-cell *matCellDef="let row"> {{row.ordreFabricationId}}</td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="operateur">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  Operateur </th>
+          <td mat-cell *matCellDef="let row"> {{row.operateur}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action" >
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td class="editDelete" mat-cell *matCellDef="let row">
+            <button *ngIf="hasRole('productManager')" mat-icon-button class="custom-icon-button edit-button"(click)="openEditForm(row)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button *ngIf="hasRole('productManager')" mat-icon-button class="custom-icon-button delete-button" (click)="deleteTag(row.idTag)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+          <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+  </div>

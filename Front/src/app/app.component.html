@@ -1,0 +1,72 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="nav.toggle()">
+     <mat-icon>menu</mat-icon>
+  </button>
+    <span>Dashborad </span>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">    <mat-icon class="iconColor">person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+     
+      <button mat-menu-item (click)="logout()">Se déconnecter</button>
+    </mat-menu>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container  class="sidenav-wrapper" >
+    <mat-sidenav  opened="false" #nav class="mat-sidenav-links" >
+            <a [routerLink]="['/Tableau de Board']" color="primary" *ngIf="hasRole('productManager')|| hasRole('contributeur')" >
+          <button mat-button>
+            <mat-icon class="iconColor">dashboard</mat-icon>
+            <span>Tableau de Board</span>
+          </button>
+        </a>
+        <a [routerLink]="['/Suivi Production']" color="primary" *ngIf="hasRole('productManager')">
+          <button mat-button>
+            <mat-icon class="iconColor">trending_up </mat-icon>
+            <span>Suivi Production </span>
+          </button>
+        </a>
+        <a [routerLink]="['/suivi du jour']" color="primary" *ngIf="hasRole('productManager')"  >
+          <button mat-button>
+            <mat-icon class="iconColor">trending_up </mat-icon>
+            <span>Suivi du jour </span>
+          </button>
+        </a>
+        <a [routerLink]="['/Ordre de fabrication']" color="primary" *ngIf="hasRole('productManager') || hasRole('contributeur')" >
+          <button mat-button>
+            <mat-icon class="iconColor">list </mat-icon>
+            <span>Ordre de fabrication</span>
+          </button>
+        </a>
+
+        <a [routerLink]="['/Ordre']" color="primary" *ngIf="hasRole('productManager')" >
+          <button mat-button>
+            <mat-icon class="iconColor">pie_chart</mat-icon>
+            <span>Ordre</span>
+          </button>
+        </a>
+        <a [routerLink]="['/Produit']" color="primary" *ngIf="hasRole('productManager') || hasRole('contributeur')">
+          <button mat-button>
+            <mat-icon class="iconColor">markunread_mailbox</mat-icon>
+            <span>Produit</span>
+          </button>
+        </a>
+        <a [routerLink]="['/client']" color="primary" *ngIf="hasRole('productManager') || hasRole('contributeur')" >
+          <button mat-button>
+            <mat-icon class="iconColor">people</mat-icon>
+            <span>Clients</span>
+          </button>
+        </a>
+        <a [routerLink]="['/tags']" color="primary" *ngIf="hasRole('productManager')|| hasRole('travailleur')" >
+          <button mat-button>
+            <mat-icon class="iconColor">local_offer</mat-icon>
+            <span>tags</span>
+          </button>
+        </a>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

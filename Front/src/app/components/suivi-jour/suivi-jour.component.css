@@ -1,0 +1,51 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .main-body {
+    padding-top: 20px;
+    margin: 0 auto;
+    padding-left: 50PX;
+      padding-right: 50PX;
+    max-width: 1348px;
+    
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .action {
+    display: flex;
+    gap: 5px;
+  }
+  mat-form-field{
+    margin-top: 20PX;
+  }
+  
+  .Add{
+    float: right;
+    margin: 4PX;
+  
+  }
+  th{
+    color:rgb(12, 12, 12) ;
+    opacity: 0.8;
+  }
+  .editDelete{
+    padding: 0;
+  }
+  .mat-mdc-table{
+    background: #eee;
+  }
+  mat-paginator{
+    background: #eee;
+  }
+
+
+.buttonContainer{
+  POSITION: relative;
+  display: grid;
+  width: 30%;
+  LEFT: 70%;
+}
+ 

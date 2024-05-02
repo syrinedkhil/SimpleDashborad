@@ -1,0 +1,23 @@
+<mat-grid-list cols="2" rowHeight="35px" gutterSize="15px">
+  <mat-grid-tile *ngFor="let tile of Content" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+    {{ tile.text }}
+    <div class="content" *ngIf="tile.value !== undefined">
+      {{ tile.value }}
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<div class="row">
+    <div class="chart" >
+      <div class="chart-container">
+        <canvas  id="MyChart" >{{ chart }}</canvas>
+      </div>
+      
+    </div>  
+    <div class="chart" >
+      <div class="chart-container">
+        <canvas  id="MySecondChart" >{{ secondChart }}</canvas>
+  </div>
+    </div>
+</div>

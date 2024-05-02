@@ -1,0 +1,81 @@
+
+<div mat-dialog-title>
+    <h1>Ordre de Fabrication Form</h1>
+</div>
+<form [formGroup]="ordreFabricationForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date Creation</mat-label>
+                <input matInput [matDatepicker]="creationpicker" formControlName="dateCreation"  >
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="creationpicker"></mat-datepicker-toggle>
+                <mat-datepicker #creationpicker></mat-datepicker>
+            </mat-form-field>
+
+            
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date Debut Lancement</mat-label>
+                    <input matInput [matDatepicker]="lancementpicker" formControlName="dateDebutLancement">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="lancementpicker"></mat-datepicker-toggle>
+                    <mat-datepicker #lancementpicker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Date Fin Lancement</mat-label>
+                        <input matInput [matDatepicker]="finpicker" formControlName="dateFinLancement">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="finpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #finpicker></mat-datepicker>
+                    </mat-form-field>
+
+                
+        </div>
+
+           <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>quantité Produite</mat-label>
+                <input matInput placeholder="Ex. 1245" formControlName="qteProduite">
+                    <mat-error *ngIf="ordreFabricationForm.get('qteProduite')?.hasError('required')">La quantité produite est requise</mat-error>
+        <mat-error *ngIf="ordreFabricationForm.get('qteProduite')?.hasError('quantityRange')">La quantité produite doit être comprise entre 1 et 2000</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>quantité Demandé</mat-label>
+                <input matInput placeholder="Ex. 1245" formControlName="qteDemander">
+                <mat-error *ngIf="ordreFabricationForm.get('qteDemander')?.hasError('required')">La quantité demandée est requise</mat-error>
+                <mat-error *ngIf="ordreFabricationForm.get('qteDemander')?.hasError('quantityRange')">La quantité demandée doit être comprise entre 1 et 2000</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Observation</mat-label>
+                <input matInput placeholder="observation " formControlName="observation">
+            </mat-form-field>
+            
+            
+              
+           </div>
+           <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Produit</mat-label>
+                <mat-select formControlName="designation">
+                  <mat-option *ngFor="let produit of ListProduit" [value]="produit.produitId">{{ produit.produitId }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Client</mat-label>
+                <mat-select formControlName="name">
+                  <mat-option *ngFor="let client of ListClient" [value]="client.name">{{ client.name }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+           </div>
+        </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+
+
+
+    

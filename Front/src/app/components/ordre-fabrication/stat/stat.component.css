@@ -1,0 +1,9 @@
+.chartClass{
+    width: 500PX;
+    border-radius: 3PX;
+    MARGIN: 30PX;
+}
+.chartOpt{
+    width: 200PX;
+    background-color: black;
+}

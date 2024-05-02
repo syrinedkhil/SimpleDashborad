@@ -1,0 +1,64 @@
+
+<div mat-dialog-title>
+    <h1>Produit Form</h1>
+</div>
+<form [formGroup]="ProduitForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Désignation</mat-label>
+                <mat-select formControlName="designation" (selectionChange)="onDesignationSelectionChange($event)">
+
+                  <mat-option *ngFor="let d of ListDesignation" [value]="d">{{d }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Code Conception</mat-label>
+                <mat-select formControlName="codeConception">
+                    <mat-option *ngFor="let code of ListcodeConception" [value]="code">{{ code }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+          
+        
+            
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Décalage Horaire</mat-label>
+                    <mat-select formControlName="decalageHoraire" (selectionChange)="onDecalageSelectionChange($event)">
+                      <mat-option *ngFor="let d of ListDecalage" [value]="d">{{d }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Code Fournisseur</mat-label>
+                    <mat-select formControlName="codeFournisseur" (selectionChange)="onCodeSelectionChange($event)">
+                      <mat-option *ngFor="let d of ListCode" [value]="d">{{d }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+           <div class="row">
+            
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date de Creation</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateCreation">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Référence</mat-label>
+                <mat-select formControlName="reference" (selectionChange)="onRefSelectionChange($event)">
+                  <mat-option *ngFor="let d of ListRef" [value]="d">{{d }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+           </div>
+        </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+
+
+
+    
